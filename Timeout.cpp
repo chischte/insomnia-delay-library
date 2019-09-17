@@ -1,6 +1,6 @@
 /*
  * *****************************************************************************
- EEPROM_Counter.cpp
+ Timeout.cpp
  Library to store values on the non volatile arduino EEPROM
  Michael Wettstein
  September 2019, Zürich
@@ -8,9 +8,9 @@
  */
 
 #include "Arduino.h"
-#include "EEPROM_Counter.h"
+#include "Timeout.h"
 
-EEPROM_Counter::EEPROM_Counter(int eepromSize, int numberOfValues)
+Timeout::Timeout(int eepromSize, int numberOfValues)
 {
   // READ WHERE THE VALUES ARE STORED:
   _numberOfValues = numberOfValues;
@@ -34,7 +34,7 @@ EEPROM_Counter::EEPROM_Counter(int eepromSize, int numberOfValues)
   _numberOfWriteCycles = eepromRead(_storeLocation);
 }
 
-void EEPROM_Counter::countOneUp(int valueNumber)
+void Timeout::countOneUp(int valueNumber)
 {
   int valueAddress = calculateAddress(valueNumber);
   long storedValue = eepromRead(valueAddress);
@@ -42,7 +42,7 @@ void EEPROM_Counter::countOneUp(int valueNumber)
   eepromWrite(newValue, valueAddress);
 }
 
-void EEPROM_Counter::set(int valueNumber, long newValue)
+void Timeout::set(int valueNumber, long newValue)
 {
   int valueAddress = calculateAddress(valueNumber);
   long storedValue = eepromRead(valueAddress);
@@ -53,14 +53,14 @@ void EEPROM_Counter::set(int valueNumber, long newValue)
   }
 }
 
-long EEPROM_Counter::getValue(int valueNumber)
+long Timeout::getValue(int valueNumber)
 {
   int valueAddress = calculateAddress(valueNumber);
   long valueRead = eepromRead(valueAddress);
   return valueRead;
 }
 
-void EEPROM_Counter::setAllZero()
+void Timeout::setAllZero()
 {
   for (int i = 0; i < _numberOfValues; i++)
   {
@@ -69,14 +69,14 @@ void EEPROM_Counter::setAllZero()
   }
 }
 
-int EEPROM_Counter::calculateAddress(int valueNumber)
+int Timeout::calculateAddress(int valueNumber)
 {
   int addressNumber = _storeLocation + 4 + valueNumber * 4;
   //shift 4 bytes for the writeCounter and 4 bytes for every new value
   return addressNumber;
 }
 
-long EEPROM_Counter::eepromRead(int sourceAddress)
+long Timeout::eepromRead(int sourceAddress)
 {
   long valueRead;
   eeprom_read_block((void*) &valueRead, (void*) sourceAddress, sizeof(valueRead));
@@ -84,14 +84,14 @@ long EEPROM_Counter::eepromRead(int sourceAddress)
   return valueRead;
 }
 
-void EEPROM_Counter::eepromWrite(long newValue, int destinationAddress)
+void Timeout::eepromWrite(long newValue, int destinationAddress)
 {
   eeprom_write_block((void*) &newValue, (void*) destinationAddress, sizeof(newValue));
   //--------------------------source------------destination---------size}
   eepromMonitorWriteCycles();
 }
 
-void EEPROM_Counter::eepromMonitorWriteCycles()
+void Timeout::eepromMonitorWriteCycles()
 {
   _numberOfWriteCycles++;
   if (_numberOfWriteCycles > 50)
@@ -116,7 +116,7 @@ void EEPROM_Counter::eepromMonitorWriteCycles()
   }
 }
 
-void EEPROM_Counter::eepromMoveStorageLocation()
+void Timeout::eepromMoveStorageLocation()
 {
   // CALCULATE NEW STORE LOCATION:
   int moveSizeInBytes = 4 + _numberOfValues * 4; //the long for the writeCounter is included
@@ -146,7 +146,7 @@ void EEPROM_Counter::eepromMoveStorageLocation()
   //--------------------------source------------destination---size}
 }
 
-void EEPROM_Counter::printDebugInformation()
+void Timeout::printDebugInformation()
 {
   char debugInfo[100];
   Serial.println("*******************************");
