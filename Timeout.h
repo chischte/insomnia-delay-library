@@ -5,6 +5,8 @@
  Michael Wettstein
  September 2019, Zürich
  * *****************************************************************************
+ Notes:
+ * *****************************************************************************
  */
 
 #ifndef Timeout_h
@@ -16,29 +18,23 @@ class Timeout
 {
 public:
   // FUNTIONS:
-  Timeout(int eepromSize, int numberOfValues);
-  void setTimeoutTime(int timeoutTime); // increases the value by one
-  void startTimeoutWatch(unsigned int timeoutTime);
+    Timeout(unsigned long timeoutTime);
   void resetTime();
-  bool requestTimeout(); // sets value
- 
+  void setActive(bool setActive)
+  bool active(); // returns true if timeout is active
+  bool out(); // returns true if timeout time has been reached
+  void changeTime(unsigned long);
+  
  // VARIABLES:
   // n.a.
 
 private:
   // FUNCTIONS:
-  long eepromRead(int sourceAdress);
-  void eepromWrite(long newValue, int destinationAddress);
-  void eepromMonitorWriteCycles();
-  void eepromMoveStorageLocation();
-  int calculateAddress(int valueNumber);
+  // n.a.
 
   // VARIABLES:
-  int _storeLocation;
-  int _maxStoreLocation;
-  int _storeWriteCounterCounter;
-  int _numberOfValues;
-  long _numberOfWriteCycles;
-
+ unsigned long _previousTime
+ 
+ 
 };
 #endif
