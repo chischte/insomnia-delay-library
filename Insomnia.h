@@ -1,27 +1,26 @@
 /*
  * *****************************************************************************
- * Timeout.h
- * Library to add timeout functions to an Arduino program
+ * Insomnia.h
+ * Library to add "no-sleep" delay and timeout functions to an Arduino program
  * Michael Wettstein
  * September 2019, Zürich
  * *****************************************************************************
- * https://github.com/chischte/timeout-library.git
+ * https://github.com/chischte/insomnia-delaytimeout-library.git
  * *****************************************************************************
  * TODO:
  * Merge changes with the ones not committed yet from OfficeChischte
- *
  * *****************************************************************************
  */
 
-#ifndef Timeout_h
-#define Timeout_h
+#ifndef Insomnia_h
+#define Insomnia_h
 
 #include "Arduino.h"
 
-class Timeout {
+class Insomnia {
 public:
     // FUNTIONS:
-    Timeout(int timeoutTime=5000);
+    Insomnia(int timeoutTime=5000);
     void resetTime();
     void setActive(bool setActive);
     bool active(); // returns true if timeout is active

@@ -1,6 +1,6 @@
 /*
  * *****************************************************************************
- * Timeout.cpp
+ * Insomnia.cpp
  * Library to add timeout functions to an Arduino program
  * Michael Wettstein
  * September 2019, Zürich
@@ -10,35 +10,35 @@
  */
 
 #include "Arduino.h"
-#include "Timeout.h"
+#include "Insomnia.h"
 
-Timeout::Timeout(int timeoutTime = 5000)
+Insomnia::Insomnia(int timeoutTime = 5000)
 {
   _timeoutTime = timeoutTime;
   _previousTime = millis();
 }
 
-void Timeout::setTime(unsigned long timeoutTime)
+void Insomnia::setTime(unsigned long timeoutTime)
 {
   _timeoutTime = timeoutTime;
 }
 
-void Timeout::resetTime()
+void Insomnia::resetTime()
 {
   _previousTime = millis();
 }
 
-void Timeout::setActive(bool setActive)
+void Insomnia::setActive(bool setActive)
 {
   _timeoutActive = setActive;
 }
 
-bool Timeout::active() // returns true if timeout is active
+bool Insomnia::active() // returns true if timeout is active
 {
   return _timeoutActive;
 }
 
-bool Timeout::timedOut() // returns true if timeout time has been reached
+bool Insomnia::timedOut() // returns true if timeout time has been reached
 {
   bool timeoutTimedOut;
   if (millis() - _previousTime > _timeoutTime)
@@ -52,7 +52,7 @@ bool Timeout::timedOut() // returns true if timeout time has been reached
   return timeoutTimedOut;
 }
 
-bool Timeout::delayTimeUp(unsigned long delay_time)
+bool Insomnia::delayTimeUp(unsigned long delay_time)
 {
   if (!_delayActive)
   {

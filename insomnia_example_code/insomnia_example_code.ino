@@ -1,13 +1,13 @@
-#include <Timeout.h> // https://github.com/chischte/timeout-library.git
+#include <Insomnia.h> // https://github.com/chischte/insomnia-timer-library.git
 
 // CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A TIMEOUT TIMER:
-Timeout timeout(5000);
+Insomnia timeout(5000);
 
 // CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A NO-SLEEP-DELAY:
-Timeout blinkDelay; //use no brackets for a delay
+Insomnia blinkDelay; //use no brackets for a delay
 
 // CREATE AN SECOND DELAY FOR THE RUNTIME SERIALPRINT:
-Timeout runtimePrintDelay; //use no brackets for a delay
+Insomnia runtimePrintDelay; //use no brackets for a delay
 
 //VARIABLES JUST FOR DEMO PURPOSES:
 bool blinkTestState;
@@ -60,7 +60,7 @@ void loop()
   {
     Serial.print("RUNTIME OF THE LOOP: ");
     Serial.print(runtime);
-    Serial.println(" ms");
+    Serial.println(" ms (time for the serial prints)");
   }
 //*/
 }

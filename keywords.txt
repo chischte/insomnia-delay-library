@@ -7,7 +7,7 @@
 # ...KEYWORD1 is generally used for the classes that you define in your library.
 #######################################
 
-Timeout	KEYWORD1
+Insomnia	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -16,9 +16,10 @@ Timeout	KEYWORD1
 
 resetTime	KEYWORD2
 setActive	KEYWORD2
-active	KEYWORD2
-out	KEYWORD2
-changeTime	KEYWORD2
+active		KEYWORD2
+timedOut	KEYWORD2
+setTime		KEYWORD2
+delayTimeUp KEYWORD2
 
 ######################################
 # Constants (LITERAL1)
