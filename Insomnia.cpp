@@ -5,7 +5,7 @@
  * Michael Wettstein
  * September 2019, Zürich
  * *****************************************************************************
- * https://github.com/chischte/timeout-library.git
+ * https://github.com/chischte/insomnia-delay-library.git
  * *****************************************************************************
  */
 

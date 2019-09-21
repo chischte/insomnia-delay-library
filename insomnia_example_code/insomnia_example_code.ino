@@ -1,4 +1,4 @@
-#include <Insomnia.h> // https://github.com/chischte/insomnia-timer-library.git
+#include <Insomnia.h> // https://github.com/chischte/insomnia-delay-library.git
 
 // CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A TIMEOUT TIMER:
 Insomnia timeout(5000);

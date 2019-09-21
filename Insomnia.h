@@ -5,7 +5,7 @@
  * Michael Wettstein
  * September 2019, Zürich
  * *****************************************************************************
- * https://github.com/chischte/insomnia-delaytimeout-library.git
+ * https://github.com/chischte/insomnia-delay-library.git
  * *****************************************************************************
  * TODO:
  * Merge changes with the ones not committed yet from OfficeChischte
