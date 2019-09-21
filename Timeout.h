@@ -7,6 +7,10 @@
  * *****************************************************************************
  * https://github.com/chischte/timeout-library.git
  * *****************************************************************************
+ * TODO:
+ * Merge changes with the ones not committed yet from OfficeChischte
+ *
+ * *****************************************************************************
  */
 
 #ifndef Timeout_h
@@ -17,12 +21,13 @@
 class Timeout {
 public:
     // FUNTIONS:
-    Timeout(unsigned long timeoutTime);
+    Timeout(int timeoutTime=5000);
     void resetTime();
     void setActive(bool setActive);
     bool active(); // returns true if timeout is active
     bool timedOut(); // returns true if timeout time has been reached
     void setTime(unsigned long);
+    bool delayTimeUp(unsigned long delayTime);
 
     // VARIABLES:
     // n.a.
@@ -34,7 +39,8 @@ private:
     // VARIABLES:
     unsigned long _previousTime;
     unsigned long _timeoutTime;
-    bool _timeoutActive=false;
+    bool _timeoutActive=true;
+    bool _delayActive=false;
 
 };
 #endif

@@ -1,24 +1,66 @@
 #include <Timeout.h> // https://github.com/chischte/timeout-library.git
 
-// CREATE AN INSTANCE OF THE LIBRARY CLASS:
+// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A TIMEOUT TIMER:
 Timeout timeout(5000);
 
-void setup() {
-    Serial.begin(9600);
-    Serial.println("EXIT SETUP");
+// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A NO-SLEEP-DELAY:
+Timeout blinkDelay; //use no brackets for a delay
+
+// CREATE AN SECOND DELAY FOR THE RUNTIME SERIALPRINT:
+Timeout runtimePrintDelay; //use no brackets for a delay
+
+//VARIABLES JUST FOR DEMO PURPOSES:
+bool blinkTestState;
+unsigned long previousTime;
+
+void setup()
+{
+  Serial.begin(9600);
+  Serial.println("EXIT SETUP");
 }
 
-void loop() {
+void loop()
+{
+  timeout.setActive(1); // enables the timeout countdown
+                        //does not reset stopwatch
 
-    timeout.setActive(1); // enables the timeout countdown
-    timeout.setTime(5000); // sets another timeout time
-    timeout.resetTime(); //restart the timeout countdown
+  // BASIC TIMEOUT ACTION WITHOUT REQUEST OF ACTIVE STATE:
+  if (timeout.timedOut())
+  { // returns true if timeout time has been reached
+    // activate emergency stop or whatever;
+  }
 
-    // TIMEOUT ACTION:
-    if (timeout.active()) { // returns true if timeout is active
-        if (timeout.timedOut()) { // returns true if timeout time has been reached
-
-            // activate emergency stop or whatever;
-        }
+  ///*
+  // TIMEOUT ACTION WITH REQUEST OF ACTIVE STATE:
+  if (timeout.active())
+  { // returns true if timeout is active
+    if (timeout.timedOut())
+    { // returns true if timeout time has been reached
+      Serial.println("TIMEOUT TIMED OUT ...RESET");
+      timeout.resetTime(); //restart the timeout countdown
     }
+  }
+
+  // USE OF THE NO-SLEEP-DELAY FUNCTION
+  // USE INDIVIDUAL INSTANCES IF USING MORE THAN ONE DELAY
+
+  if (blinkDelay.delayTimeUp(500))
+  {
+    blinkTestState = !blinkTestState;
+    Serial.print("BLINK STATE: ");
+    Serial.println(blinkTestState);
+  }
+
+  // CALCULATE RUNTIME
+  // TO DEMONSRATE THAT THE DELAY DOES NOT KEEP THE PROGRAM WAITING
+
+  unsigned long runtime = millis()-previousTime;
+  previousTime = millis();
+  if (runtimePrintDelay.delayTimeUp(1000))
+  {
+    Serial.print("RUNTIME OF THE LOOP: ");
+    Serial.print(runtime);
+    Serial.println(" ms");
+  }
+//*/
 }
