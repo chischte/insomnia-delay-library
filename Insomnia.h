@@ -7,9 +7,6 @@
  * *****************************************************************************
  * https://github.com/chischte/insomnia-delay-library.git
  * *****************************************************************************
- * TODO:
- * Merge changes with the ones not committed yet from OfficeChischte
- * *****************************************************************************
  */
 
 #ifndef Insomnia_h
