@@ -2,9 +2,9 @@
 
 **Library to add "no-sleep" delays and timeout functions to an Arduino program.**
 
-How to use the library to create a delay:
------------------------------------------
-	// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A NO-SLEEP-DELAY:
+How to use the library to create a no-sleep-delay:
+-------------------------------------------------
+	// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A DELAY:
 	// use a seperate instance for every delay used
 	// delays in series do not wait on each other
 	
@@ -16,7 +16,7 @@ How to use the library to create a delay:
     	// do stuff if delay times up
 	}
 	
-How to use the library to create timout function:
+How to use the library to create a timeout function:
 ------------------------------------------------
 	// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A TIMEOUT TIMER:
 	
