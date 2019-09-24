@@ -3,20 +3,18 @@
 **Library to add "no-sleep" delays and timeout functions to an Arduino program.**
 
 
-How to use the library to create a no-sleep-delay
+How to use the library to create a no-sleep-delay:
 -------------------------------------------------
 	// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A DELAY:
 	Insomnia exampleDelay;
-	// use a seperate instance for every delay used
-	// delays in series do not wait on each other
-	
-	
 	// USE DELAY:
 	if (exampleDelay.delayTimeUp(500)) { // delay time 500ms
 	  // do stuff if delay times up
 	}
+	// create a separate instance for every delay used
+	// delays in series do not wait on each other
 	
-How to use the library to create a timeout function
+How to use the library to create a timeout function:
 ------------------------------------------------
 	// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A TIMEOUT TIMER:
 	Insomnia timeout(5000);
@@ -39,7 +37,7 @@ How to use the library to create a timeout function
 	  }
 	}
 
- **An example of how the functions can be used can be found in the example code "insomnia_example_code".**	
+ **An example of how the functions can be used can be found in the example code.**	
 
 Installation
 ------------
