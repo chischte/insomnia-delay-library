@@ -1,6 +1,6 @@
 # insomnia-library 
 
-**Library to add "no-sleep" delays and timeout functions to an Arduino program.**
+**Library to add "no-sleep" delays and timeout functions to an Arduino program**
 
 
 How to use the library to create a no-sleep-delay
@@ -25,6 +25,10 @@ How to use the library to create a timeout function
 	if (timeout.timedOut()) {
 	  // activate emergency stop or whatever;
 	}
+  	
+  	// SET A DIFFERENT TIMEOUT TIME:
+  	timeout.setTime(1000);
+  	// does not reset the stopwatch
   	
 	// ADDITIONALY A TIMOUT CAN BE FLAGED ACTIVE OR INACTIVE:
 	timeout.setActive(1); 
