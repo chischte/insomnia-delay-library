@@ -22,12 +22,13 @@ How to use the library to create a timeout function
 	Insomnia timeout(5000);
 
 	// BASIC TIMEOUT ACTION:
-	if (timeout.timedOut()) { // returns true if timeout time has been reached
+	if (timeout.timedOut()) {
         // activate emergency stop or whatever;
 	}
   	
 	// ADDITIONALY A TIMOUT CAN BE FLAGED ACTIVE OR INACTIVE:
-	timeout.setActive(1); // does not reset the stopwatch
+	timeout.setActive(1); 
+	// does not reset the stopwatch
   	// this is completely optional and has no other effect than act as a flag
 	
 	// TIMEOUT ACTION WITH REQUEST OF ACTIVE STATE:
