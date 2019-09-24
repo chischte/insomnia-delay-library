@@ -36,7 +36,10 @@ How to use the library to create a timeout function:
 	    timeout.resetTime(); // restart the timeout countdown
 	  }
 	}
-
+	
+	// SET A DIFFERENT TIMEOUT TIME:
+	timeout.setTime(112233);
+	
  **An example of how the functions can be used can be found in the example code.**	
 
 Installation
