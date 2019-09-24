@@ -7,6 +7,14 @@
  * *****************************************************************************
  * https://github.com/chischte/insomnia-delay-library.git
  * *****************************************************************************
+ * TODO:
+ * Add Instructions to Readme:
+ *     The timeout status can be set active or inactive
+ *     By default the status is active
+ *	   the usage of the setActive command is completely optional
+ *	   and not required for a basic usage
+ * *****************************************************************************
+ * 
  */
 
 #ifndef Insomnia_h
