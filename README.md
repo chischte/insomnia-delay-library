@@ -13,7 +13,7 @@ How to use the library to create a no-sleep-delay
 	
 	// USE DELAY:
 	if (exampleDelay.delayTimeUp(500)) { // delay time 500ms
-    	  // do stuff if delay times up
+	  // do stuff if delay times up
 	}
 	
 How to use the library to create a timeout function
@@ -23,7 +23,7 @@ How to use the library to create a timeout function
 
 	// BASIC TIMEOUT ACTION:
 	if (timeout.timedOut()) {
-          // activate emergency stop or whatever;
+	  // activate emergency stop or whatever;
 	}
   	
 	// ADDITIONALY A TIMOUT CAN BE FLAGED ACTIVE OR INACTIVE:
