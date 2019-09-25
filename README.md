@@ -7,11 +7,12 @@ How to use the library to create a no-sleep-delay:
 -------------------------------------------------
 	// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A DELAY:
 	Insomnia exampleDelay;
-	
+
 	// USE DELAY:
 	if (exampleDelay.delayTimeUp(500)) { // delay time 500ms
 	  // do stuff if delay times up
 	}
+
 	// create a separate instance for every delay used
 	// delays in series do not wait on each other
 	
@@ -19,7 +20,7 @@ How to use the library to create a timeout function:
 ------------------------------------------------
 	// CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A TIMEOUT TIMER:
 	Insomnia timeout(5000);
-	
+
 	// BASIC TIMEOUT ACTION:
 	if (timeout.timedOut()) {
 	  // activate emergency stop or whatever;
@@ -29,7 +30,7 @@ How to use the library to create a timeout function:
 	timeout.setActive(1); 
 	// does not reset the stopwatch
 	// this is completely optional and has no other effect than act as a flag
-	
+
 	// TIMEOUT ACTION WITH REQUEST OF ACTIVE STATE:
 	if (timeout.active()) {
 	  if (timeout.timedOut()) { 
