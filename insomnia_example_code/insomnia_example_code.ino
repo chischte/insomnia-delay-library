@@ -27,6 +27,11 @@ void loop() {
     // activate emergency stop or whatever;
   }
 
+  // SET A DIFFERENT TIMEOUT TIME:
+  timeout.setTime(100);
+  // does not reset the stopwatch
+
+
   // TIMEOUT ACTION WITH REQUEST OF ACTIVE STATE:
   if (timeout.active()) { // returns true if timeout is active
     if (timeout.timedOut()) { // returns true if timeout time has been reached
@@ -55,3 +60,4 @@ void loop() {
     Serial.println(" ms");
   }
 }
+
