@@ -17,7 +17,7 @@
 class Insomnia {
 public:
   // FUNTIONS:
-  Insomnia(int timeoutTime = 5000);
+  Insomnia(unsigned long timeoutTime = 5000);
   void resetTime();
   void setActive(bool setActive);
   bool active(); // returns true if timeout is active

@@ -12,7 +12,7 @@
 #include "Arduino.h"
 #include "Insomnia.h"
 
-Insomnia::Insomnia(int timeoutTime = 5000) {
+Insomnia::Insomnia(unsigned long timeoutTime = 5000) {
   _timeoutTime = timeoutTime;
   _previousTime = millis();
 }
