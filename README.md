@@ -41,7 +41,7 @@ How to use the library to create a timeout function:
 
 	// SET A DIFFERENT TIMEOUT TIME:
 	timeout.setTime(112233);
-	// does not reset the stopwatch
+	// does reset the stopwatch
 	
  **An example of how the functions can be used can be found in the example code.**	
 

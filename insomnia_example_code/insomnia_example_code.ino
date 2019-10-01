@@ -29,7 +29,7 @@ void loop() {
 
   // SET A DIFFERENT TIMEOUT TIME:
   timeout.setTime(100);
-  // does not reset the stopwatch
+  // does reset the stopwatch
 
 
   // TIMEOUT ACTION WITH REQUEST OF ACTIVE STATE:

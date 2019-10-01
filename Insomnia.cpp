@@ -19,6 +19,7 @@ Insomnia::Insomnia(unsigned long timeoutTime = 5000) {
 
 void Insomnia::setTime(unsigned long timeoutTime) {
   _timeoutTime = timeoutTime;
+  _previousTime = millis();
 }
 
 void Insomnia::resetTime() {
