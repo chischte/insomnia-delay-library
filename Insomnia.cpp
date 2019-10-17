@@ -12,7 +12,7 @@
 #include "Arduino.h"
 #include "Insomnia.h"
 
-Insomnia::Insomnia(unsigned long timeoutTime = 5000) {
+Insomnia::Insomnia(unsigned long timeoutTime /*= 5000*/) {
   _timeoutTime = timeoutTime;
   _previousTime = millis();
 }
@@ -46,14 +46,37 @@ bool Insomnia::timedOut() // returns true if timeout time has been reached
   return timeoutTimedOut;
 }
 
-bool Insomnia::delayTimeUp(unsigned long delay_time) {
+bool Insomnia::delayTimeUp(unsigned long delayTime) {
+  _delayTime=delayTime;
   if (!_delayActive) {
     _previousTime = millis();
     _delayActive = true;
-  } else if (millis() - _previousTime > delay_time) {
+  } else if (millis() - _previousTime > _delayTime) {
     _delayActive = false;
     return (1);
   }
   return (0);
+}
+
+unsigned long Insomnia::remainingDelayTime() {
+  unsigned long timePassed = millis() - _previousTime;
+  unsigned long timeRemaining;
+  if (_delayTime > timePassed) {
+    timeRemaining = _delayTime - timePassed;
+  } else {
+    timeRemaining = 0;
+  }
+  return timeRemaining;
+}
+
+unsigned long Insomnia::remainingTimeoutTime() {
+  unsigned long timePassed = millis() - _previousTime;
+  unsigned long timeRemaining;
+  if (_timeoutTime > timePassed) {
+    timeRemaining = _timeoutTime - timePassed;
+  } else {
+    timeRemaining = 0;
+  }
+  return timeRemaining;
 }
 
