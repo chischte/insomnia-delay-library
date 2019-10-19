@@ -24,6 +24,8 @@ public:
   bool timedOut(); // returns true if timeout time has been reached
   void setTime(unsigned long);
   bool delayTimeUp(unsigned long delayTime);
+  unsigned long remainingDelayTime();
+  unsigned long remainingTimeoutTime();
 
   // VARIABLES:
   // n.a.
@@ -35,6 +37,7 @@ private:
   // VARIABLES:
   unsigned long _previousTime;
   unsigned long _timeoutTime;
+  unsigned long _delayTime;
   bool _timeoutActive = true;
   bool _delayActive = false;
 

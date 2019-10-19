@@ -13,7 +13,10 @@ How to use the library to create a no-sleep-delay:
 	  // do stuff if delay times up
 	}
 
-	// create a separate instance for every delay used
+	// PRINT THE REMAINING DELAY TIME:
+	Serial.println(blinkDelay.remainingDelayTime());
+
+	// create a separate instance for every delay and timeout that can be used simultaneously
 	// delays in series do not wait on each other
 	
 How to use the library to create a timeout function:
@@ -42,6 +45,9 @@ How to use the library to create a timeout function:
 	// SET A DIFFERENT TIMEOUT TIME:
 	timeout.setTime(112233);
 	// does reset the stopwatch
+
+	// PRINT THE REMAINING TIMEOUT TIME:
+	Serial.println(timeout.remainingTimeoutTime());
 	
  **An example of how the functions can be used can be found in the example code.**	
 
