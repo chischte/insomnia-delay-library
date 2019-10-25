@@ -35,9 +35,9 @@ private:
   // n.a.
 
   // VARIABLES:
-  unsigned long _previousTime;
-  unsigned long _timeoutTime;
-  unsigned long _delayTime;
+  unsigned long _previousTime = 0;
+  unsigned long _timeoutTime = 0;
+  unsigned long _delayTime = 0;
   bool _timeoutActive = true;
   bool _delayActive = false;
 
