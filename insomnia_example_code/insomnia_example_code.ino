@@ -13,7 +13,7 @@ Insomnia runtimePrintDelay; // use no brackets for a delay
 
 // CHOOSE DEMO MODES:
 bool timeoutDemo = 1; // set 1 to see it in action, set 0 to minimize serial print traffic
-bool delayDemo = 0;   // set 1 to see it in action, set 0 to minimize serial print traffic
+bool delayDemo = 0; // set 1 to see it in action, set 0 to minimize serial print traffic
 bool runtimeDemo = 0; // set 1 to see it in action, set 0 to minimize serial print traffic
 
 void setup() {
@@ -21,7 +21,7 @@ void setup() {
   Serial.println("EXIT SETUP");
 
   // SET A DIFFERENT TIMEOUT TIME:
-  timeout.setTime(7000);
+  timeout.set_time(7000);
   // does reset the stopwatch
 }
 
@@ -30,23 +30,23 @@ void loop() {
   // TIMEOUT DEMO
   //*****************************************************************************
   if (timeoutDemo) {
-    timeout.set_flag_activated(1); // enables the timeout countdown
-                                   // does not reset the stopwatch
+    timeout.set_flag_activated(1); // marks the timeout as activated
+        // does not reset the stopwatch
 
     // BASIC TIMEOUT ACTION WITHOUT REQUEST OF ACTIVE STATE:
-    if (timeout.timedOut()) { // returns true if timeout time has been reached
+    if (timeout.has_timed_out()) { // returns true if timeout time has been reached
       // activate emergency stop or whatever;
     }
     // PRINT THE REMAINING TIMEOUT TIME:
     Serial.print("REMAINING TIMEOUT TIME: ");
-    Serial.print(timeout.remainingTimeoutTime());
+    Serial.print(timeout.get_remaining_timeout_time());
     Serial.println(" ms");
 
     // TIMEOUT ACTION WITH REQUEST OF ACTIVE STATE:
-    if (timeout.active()) {     // returns true if timeout is active
-      if (timeout.timedOut()) { // returns true if timeout time has been reached
+    if (timeout.is_marked_activated()) { // returns true if timeout is active
+      if (timeout.has_timed_out()) { // returns true if timeout time has been reached
         Serial.println("TIMEOUT TIMED OUT ...RESET");
-        timeout.resetTime(); // restart the timeout countdown
+        timeout.reset_time(); // restart the timeout countdown
         delay(2000);
       }
     }
@@ -58,7 +58,7 @@ void loop() {
     // USE OF THE NO-SLEEP-DELAY FUNCTION
     // use a seperate instance for every delay used
 
-    if (blinkDelay.delayTimeUp(3000)) { // delay time 500ms
+    if (blinkDelay.delay_time_is_up(3000)) { // delay time 3000ms
       static bool blinkTestState;
       blinkTestState = !blinkTestState;
       Serial.print("BLINK STATE: ");
@@ -68,7 +68,7 @@ void loop() {
 
     // PRINT THE REMAINING DELAY TIME:
     Serial.print("REMAINING BLINK-DELAY TIME: ");
-    Serial.print(blinkDelay.remainingDelayTime());
+    Serial.print(blinkDelay.get_remaining_delay_time());
     Serial.println(" ms");
   }
 
@@ -80,7 +80,7 @@ void loop() {
     // to demonstrate that the insomnia-delay does not put the program to sleep
     static unsigned long previousTime;
     unsigned long runtime = micros() - previousTime;
-    if (runtimePrintDelay.delayTimeUp(1000)) {
+    if (runtimePrintDelay.delay_time_is_up(1000)) {
       Serial.print("RUNTIME OF THE LOOP: ");
       Serial.print(runtime);
       Serial.println(" microseconds");

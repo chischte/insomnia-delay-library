@@ -18,14 +18,14 @@ class Insomnia {
 public:
   // FUNTIONS:
   Insomnia(unsigned long timeoutTime = 5000);
-  void resetTime();
+  void reset_time();
   void set_flag_activated(bool setActive);
-  bool active();   // returns true if timeout is active
-  bool timedOut(); // returns true if timeout time has been reached
-  void setTime(unsigned long);
-  bool delayTimeUp(unsigned long delayTime);
-  unsigned long remainingDelayTime();
-  unsigned long remainingTimeoutTime();
+  bool is_marked_activated(); // returns true if timeout is active
+  bool has_timed_out(); // returns true if timeout time has been reached
+  void set_time(unsigned long);
+  bool delay_time_is_up(unsigned long delayTime);
+  unsigned long get_remaining_delay_time();
+  unsigned long get_remaining_timeout_time();
 
   // VARIABLES:
   // n.a.
@@ -35,10 +35,10 @@ private:
   // n.a.
 
   // VARIABLES:
-  unsigned long _previousTime = 0;
-  unsigned long _timeoutTime = 0;
-  unsigned long _delayTime = 0;
-  bool _timeoutActivated = false;
-  bool _delayActive = false;
+  unsigned long _previous_time = 0;
+  unsigned long _timeout_time = 0;
+  unsigned long _delay_time = 0;
+  bool _timeout_is_marked_activated = false;
+  bool _delay_is_active = false;
 };
 #endif
