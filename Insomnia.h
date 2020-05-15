@@ -19,8 +19,8 @@ public:
   // FUNTIONS:
   Insomnia(unsigned long timeoutTime = 5000);
   void resetTime();
-  void setActive(bool setActive);
-  bool active(); // returns true if timeout is active
+  void set_flag_activated(bool setActive);
+  bool active();   // returns true if timeout is active
   bool timedOut(); // returns true if timeout time has been reached
   void setTime(unsigned long);
   bool delayTimeUp(unsigned long delayTime);
@@ -38,8 +38,7 @@ private:
   unsigned long _previousTime = 0;
   unsigned long _timeoutTime = 0;
   unsigned long _delayTime = 0;
-  bool _timeoutActive = true;
+  bool _timeoutActivated = false;
   bool _delayActive = false;
-
 };
 #endif

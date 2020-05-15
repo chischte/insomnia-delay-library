@@ -9,8 +9,8 @@
  * *****************************************************************************
  */
 
-#include "Arduino.h"
 #include "Insomnia.h"
+#include "Arduino.h"
 
 Insomnia::Insomnia(unsigned long timeoutTime /*= 5000*/) {
   _timeoutTime = timeoutTime;
@@ -22,17 +22,13 @@ void Insomnia::setTime(unsigned long timeoutTime) {
   _previousTime = millis();
 }
 
-void Insomnia::resetTime() {
-  _previousTime = millis();
-}
+void Insomnia::resetTime() { _previousTime = millis(); }
 
-void Insomnia::setActive(bool setActive) {
-  _timeoutActive = setActive;
-}
+void Insomnia::set_flag_activated(bool setActive) { _timeoutActivated = setActive; }
 
 bool Insomnia::active() // returns true if timeout is active
 {
-  return _timeoutActive;
+  return _timeoutActivated;
 }
 
 bool Insomnia::timedOut() // returns true if timeout time has been reached
@@ -47,7 +43,7 @@ bool Insomnia::timedOut() // returns true if timeout time has been reached
 }
 
 bool Insomnia::delayTimeUp(unsigned long delayTime) {
-  _delayTime=delayTime;
+  _delayTime = delayTime;
   if (!_delayActive) {
     _previousTime = millis();
     _delayActive = true;
@@ -79,4 +75,3 @@ unsigned long Insomnia::remainingTimeoutTime() {
   }
   return timeRemaining;
 }
-

@@ -4,14 +4,14 @@
 Insomnia timeout(5000);
 
 // CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A NO-SLEEP-DELAY:
-Insomnia blinkDelay; //use no brackets for a delay
+Insomnia blinkDelay; // use no brackets for a delay
 
 // CREATE AN SECOND DELAY:
-Insomnia runtimePrintDelay; //use no brackets for a delay
+Insomnia runtimePrintDelay; // use no brackets for a delay
 
 // VARIABLES JUST FOR DEMONSTRATION PURPOSES:
 
-//CHOOSE DEMO MODES:
+// CHOOSE DEMO MODES:
 bool timeoutDemo = 1; // set 1 to see it in action, set 0 to minimize serial print traffic
 bool delayDemo = 0;   // set 1 to see it in action, set 0 to minimize serial print traffic
 bool runtimeDemo = 0; // set 1 to see it in action, set 0 to minimize serial print traffic
@@ -30,8 +30,8 @@ void loop() {
   // TIMEOUT DEMO
   //*****************************************************************************
   if (timeoutDemo) {
-    timeout.setActive(1); // enables the timeout countdown
-                          // does not reset the stopwatch
+    timeout.set_flag_activated(1); // enables the timeout countdown
+                                   // does not reset the stopwatch
 
     // BASIC TIMEOUT ACTION WITHOUT REQUEST OF ACTIVE STATE:
     if (timeout.timedOut()) { // returns true if timeout time has been reached
@@ -43,10 +43,10 @@ void loop() {
     Serial.println(" ms");
 
     // TIMEOUT ACTION WITH REQUEST OF ACTIVE STATE:
-    if (timeout.active()) { // returns true if timeout is active
+    if (timeout.active()) {     // returns true if timeout is active
       if (timeout.timedOut()) { // returns true if timeout time has been reached
         Serial.println("TIMEOUT TIMED OUT ...RESET");
-        timeout.resetTime(); //restart the timeout countdown
+        timeout.resetTime(); // restart the timeout countdown
         delay(2000);
       }
     }
@@ -87,6 +87,4 @@ void loop() {
     }
     previousTime = micros();
   }
-
 }
-
