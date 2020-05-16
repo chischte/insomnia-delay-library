@@ -9,36 +9,32 @@
  * *****************************************************************************
  */
 
-#include "Arduino.h"
 #include "Insomnia.h"
+#include "Arduino.h"
 
 Insomnia::Insomnia(unsigned long timeoutTime /*= 5000*/) {
-  _timeoutTime = timeoutTime;
-  _previousTime = millis();
+  _timeout_time = timeoutTime;
+  _previous_time = millis();
 }
 
-void Insomnia::setTime(unsigned long timeoutTime) {
-  _timeoutTime = timeoutTime;
-  _previousTime = millis();
+void Insomnia::set_time(unsigned long timeoutTime) {
+  _timeout_time = timeoutTime;
+  _previous_time = millis();
 }
 
-void Insomnia::resetTime() {
-  _previousTime = millis();
-}
+void Insomnia::reset_time() { _previous_time = millis(); }
 
-void Insomnia::setActive(bool setActive) {
-  _timeoutActive = setActive;
-}
+void Insomnia::set_flag_activated(bool setActive) { _timeout_is_marked_activated = setActive; }
 
-bool Insomnia::active() // returns true if timeout is active
+bool Insomnia::is_marked_activated() // returns true if timeout is active
 {
-  return _timeoutActive;
+  return _timeout_is_marked_activated;
 }
 
-bool Insomnia::timedOut() // returns true if timeout time has been reached
+bool Insomnia::has_timed_out() // returns true if timeout time has been reached
 {
   bool timeoutTimedOut;
-  if (millis() - _previousTime > _timeoutTime) {
+  if (millis() - _previous_time > _timeout_time) {
     timeoutTimedOut = true;
   } else {
     timeoutTimedOut = false;
@@ -46,37 +42,36 @@ bool Insomnia::timedOut() // returns true if timeout time has been reached
   return timeoutTimedOut;
 }
 
-bool Insomnia::delayTimeUp(unsigned long delayTime) {
-  _delayTime=delayTime;
-  if (!_delayActive) {
-    _previousTime = millis();
-    _delayActive = true;
-  } else if (millis() - _previousTime > _delayTime) {
-    _delayActive = false;
+bool Insomnia::delay_time_is_up(unsigned long delayTime) {
+  _delay_time = delayTime;
+  if (!_delay_is_active) {
+    _previous_time = millis();
+    _delay_is_active = true;
+  } else if (millis() - _previous_time > _delay_time) {
+    _delay_is_active = false;
     return (1);
   }
   return (0);
 }
 
-unsigned long Insomnia::remainingDelayTime() {
-  unsigned long timePassed = millis() - _previousTime;
+unsigned long Insomnia::get_remaining_delay_time() {
+  unsigned long timePassed = millis() - _previous_time;
   unsigned long timeRemaining;
-  if (_delayTime > timePassed) {
-    timeRemaining = _delayTime - timePassed;
+  if (_delay_time > timePassed) {
+    timeRemaining = _delay_time - timePassed;
   } else {
     timeRemaining = 0;
   }
   return timeRemaining;
 }
 
-unsigned long Insomnia::remainingTimeoutTime() {
-  unsigned long timePassed = millis() - _previousTime;
+unsigned long Insomnia::get_remaining_timeout_time() {
+  unsigned long timePassed = millis() - _previous_time;
   unsigned long timeRemaining;
-  if (_timeoutTime > timePassed) {
-    timeRemaining = _timeoutTime - timePassed;
+  if (_timeout_time > timePassed) {
+    timeRemaining = _timeout_time - timePassed;
   } else {
     timeRemaining = 0;
   }
   return timeRemaining;
 }
-

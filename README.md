@@ -2,6 +2,9 @@
 
 **Library to add "no-sleep" delays and timeout functions to an Arduino program**
 
+TODO: Split this library to a timeout and a delay library, to make it easier to understand
+TODO: create library "insomnia-delay-library" and "insomnia-timeout-library"
+
 
 How to use the library to create a no-sleep-delay:
 -------------------------------------------------
