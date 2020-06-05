@@ -19,6 +19,7 @@ public:
   // FUNTIONS:
   Insomnia(unsigned long timeoutTime = 5000);
   void reset_time();
+  void set_unstarted();
   void set_flag_activated(bool setActive);
   bool is_marked_activated(); // returns true if timeout is active
   bool has_timed_out(); // returns true if timeout time has been reached

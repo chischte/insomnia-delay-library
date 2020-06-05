@@ -24,6 +24,8 @@ void Insomnia::set_time(unsigned long timeoutTime) {
 
 void Insomnia::reset_time() { _previous_time = millis(); }
 
+void Insomnia::set_unstarted() { _delay_is_active = false; }
+
 void Insomnia::set_flag_activated(bool setActive) { _timeout_is_marked_activated = setActive; }
 
 bool Insomnia::is_marked_activated() // returns true if timeout is active
