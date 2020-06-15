@@ -12,13 +12,13 @@
 #include "Insomnia.h"
 #include "Arduino.h"
 
-Insomnia::Insomnia(unsigned long timeoutTime /*= 5000*/) {
-  _timeout_time = timeoutTime;
+Insomnia::Insomnia(unsigned long timeout_time /*= 5000*/) {
+  _timeout_time = timeout_time;
   _previous_time = millis();
 }
 
-void Insomnia::set_time(unsigned long timeoutTime) {
-  _timeout_time = timeoutTime;
+void Insomnia::set_time(unsigned long timeout_time) {
+  _timeout_time = timeout_time;
   _previous_time = millis();
 }
 
@@ -35,17 +35,17 @@ bool Insomnia::is_marked_activated() // returns true if timeout is active
 
 bool Insomnia::has_timed_out() // returns true if timeout time has been reached
 {
-  bool timeoutTimedOut;
+  bool timeout_timed_out;
   if (millis() - _previous_time > _timeout_time) {
-    timeoutTimedOut = true;
+    timeout_timed_out = true;
   } else {
-    timeoutTimedOut = false;
+    timeout_timed_out = false;
   }
-  return timeoutTimedOut;
+  return timeout_timed_out;
 }
 
-bool Insomnia::delay_time_is_up(unsigned long delayTime) {
-  _delay_time = delayTime;
+bool Insomnia::delay_time_is_up(unsigned long delay_time) {
+  _delay_time = delay_time;
   if (!_delay_is_active) {
     _previous_time = millis();
     _delay_is_active = true;
@@ -57,23 +57,23 @@ bool Insomnia::delay_time_is_up(unsigned long delayTime) {
 }
 
 unsigned long Insomnia::get_remaining_delay_time() {
-  unsigned long timePassed = millis() - _previous_time;
-  unsigned long timeRemaining;
-  if (_delay_time > timePassed) {
-    timeRemaining = _delay_time - timePassed;
+  unsigned long time_passed = millis() - _previous_time;
+  unsigned long time_remaining;
+  if (_delay_time > time_passed) {
+    time_remaining = _delay_time - time_passed;
   } else {
-    timeRemaining = 0;
+    time_remaining = 0;
   }
-  return timeRemaining;
+  return time_remaining;
 }
 
 unsigned long Insomnia::get_remaining_timeout_time() {
-  unsigned long timePassed = millis() - _previous_time;
-  unsigned long timeRemaining;
-  if (_timeout_time > timePassed) {
-    timeRemaining = _timeout_time - timePassed;
+  unsigned long time_passed = millis() - _previous_time;
+  unsigned long time_remaining;
+  if (_timeout_time > time_passed) {
+    time_remaining = _timeout_time - time_passed;
   } else {
-    timeRemaining = 0;
+    time_remaining = 0;
   }
-  return timeRemaining;
+  return time_remaining;
 }

@@ -4,17 +4,17 @@
 Insomnia timeout(5000);
 
 // CREATE AN INSTANCE OF THE LIBRARY CLASS FOR A NO-SLEEP-DELAY:
-Insomnia blinkDelay; // use no brackets for a delay
+Insomnia blink_delay; // use no brackets for a delay
 
 // CREATE AN SECOND DELAY:
-Insomnia runtimePrintDelay; // use no brackets for a delay
+Insomnia runtime_print_delay; // use no brackets for a delay
 
 // VARIABLES JUST FOR DEMONSTRATION PURPOSES:
 
 // CHOOSE DEMO MODES:
-bool timeoutDemo = 1; // set 1 to see it in action, set 0 to minimize serial print traffic
-bool delayDemo = 0; // set 1 to see it in action, set 0 to minimize serial print traffic
-bool runtimeDemo = 0; // set 1 to see it in action, set 0 to minimize serial print traffic
+bool timeout_demo = 1; // set 1 to see it in action, set 0 to minimize serial print traffic
+bool delay_demo = 0; // set 1 to see it in action, set 0 to minimize serial print traffic
+bool runtime_demo = 0; // set 1 to see it in action, set 0 to minimize serial print traffic
 
 void setup() {
   Serial.begin(9600);
@@ -29,7 +29,7 @@ void loop() {
   //*****************************************************************************
   // TIMEOUT DEMO
   //*****************************************************************************
-  if (timeoutDemo) {
+  if (timeout_demo) {
     timeout.set_flag_activated(1); // marks the timeout as activated
         // does not reset the stopwatch
 
@@ -54,37 +54,37 @@ void loop() {
   //*****************************************************************************
   // DELAY DEMO
   //*****************************************************************************
-  if (delayDemo) {
+  if (delay_demo) {
     // USE OF THE NO-SLEEP-DELAY FUNCTION
     // use a seperate instance for every delay used
 
-    if (blinkDelay.delay_time_is_up(3000)) { // delay time 3000ms
-      static bool blinkTestState;
-      blinkTestState = !blinkTestState;
+    if (blink_delay.delay_time_is_up(3000)) { // delay time 3000ms
+      static bool blink_test_state;
+      blink_test_state = !blink_test_state;
       Serial.print("BLINK STATE: ");
-      Serial.println(blinkTestState);
+      Serial.println(blink_test_state);
       delay(2000);
     }
 
     // PRINT THE REMAINING DELAY TIME:
     Serial.print("REMAINING BLINK-DELAY TIME: ");
-    Serial.print(blinkDelay.get_remaining_delay_time());
+    Serial.print(blink_delay.get_remaining_delay_time());
     Serial.println(" ms");
   }
 
   //*****************************************************************************
   // RUNTIME DEMO
   //*****************************************************************************
-  if (runtimeDemo) {
+  if (runtime_demo) {
     // CALCULATE RUNTIME
     // to demonstrate that the insomnia-delay does not put the program to sleep
-    static unsigned long previousTime;
-    unsigned long runtime = micros() - previousTime;
-    if (runtimePrintDelay.delay_time_is_up(1000)) {
+    static unsigned long previous_time;
+    unsigned long runtime = micros() - previous_time;
+    if (runtime_print_delay.delay_time_is_up(1000)) {
       Serial.print("RUNTIME OF THE LOOP: ");
       Serial.print(runtime);
       Serial.println(" microseconds");
     }
-    previousTime = micros();
+    previous_time = micros();
   }
 }

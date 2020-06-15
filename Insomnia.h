@@ -17,10 +17,10 @@
 class Insomnia {
 public:
   // FUNTIONS:
-  Insomnia(unsigned long timeoutTime = 5000);
+  Insomnia(unsigned long timeout_time = 5000);
   void reset_time();
   void set_unstarted();
-  void set_flag_activated(bool setActive);
+  void set_flag_activated(bool set_active);
   bool is_marked_activated(); // returns true if timeout is active
   bool has_timed_out(); // returns true if timeout time has been reached
   void set_time(unsigned long);
